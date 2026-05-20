@@ -15,10 +15,23 @@ export type TelegramMessage = {
   from?: TelegramUser;
   chat: TelegramChat;
   text?: string;
+  business_connection_id?: string;
+};
+
+export type TelegramBusinessConnection = {
+  id: string;
+  user: TelegramUser;
+  user_chat_id: number;
+  date: number;
+  can_reply: boolean;
+  is_enabled: boolean;
 };
 
 export type TelegramUpdate = {
   update_id: number;
   message?: TelegramMessage;
   edited_message?: TelegramMessage;
+  business_connection?: TelegramBusinessConnection;
+  business_message?: TelegramMessage;
+  edited_business_message?: TelegramMessage;
 };

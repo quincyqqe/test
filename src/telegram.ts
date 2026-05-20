@@ -5,22 +5,39 @@ type TelegramResponse = {
   description?: string;
 };
 
+type TelegramSendOptions = {
+  businessConnectionId?: string;
+};
+
 const MAX_TELEGRAM_MESSAGE_LENGTH = 4096;
 
-export async function sendTelegramTyping(chatId: number): Promise<void> {
+export async function sendTelegramTyping(
+  chatId: number,
+  options: TelegramSendOptions = {}
+): Promise<void> {
   await telegramRequest("sendChatAction", {
     chat_id: chatId,
-    action: "typing"
+    action: "typing",
+    ...(options.businessConnectionId
+      ? { business_connection_id: options.businessConnectionId }
+      : {})
   });
 }
 
-export async function sendTelegramMessage(chatId: number, text: string): Promise<void> {
+export async function sendTelegramMessage(
+  chatId: number,
+  text: string,
+  options: TelegramSendOptions = {}
+): Promise<void> {
   const chunks = splitMessage(text);
   for (const chunk of chunks) {
     await telegramRequest("sendMessage", {
       chat_id: chatId,
       text: chunk,
-      disable_web_page_preview: true
+      disable_web_page_preview: true,
+      ...(options.businessConnectionId
+        ? { business_connection_id: options.businessConnectionId }
+        : {})
     });
   }
 }

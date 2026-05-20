@@ -19,7 +19,14 @@ const url = `${normalizedAppUrl.replace(/\/$/, "")}/api/telegram`;
 
 const body = {
   url,
-  allowed_updates: ["message", "edited_message"],
+  allowed_updates: [
+    "message",
+    "edited_message",
+    "business_connection",
+    "business_message",
+    "edited_business_message",
+    "deleted_business_messages"
+  ],
   ...(secretToken ? { secret_token: secretToken } : {})
 };
 
