@@ -1,0 +1,20 @@
+{
+  "name": "nvidia-nim-telegram-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx scripts/local-dev.ts",
+    "typecheck": "tsc --noEmit",
+    "set-webhook": "node scripts/set-webhook.mjs",
+    "get-webhook": "node scripts/get-webhook.mjs",
+    "delete-webhook": "node scripts/delete-webhook.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "@vercel/node": "^5.8.3",
+    "tsx": "^4.22.3",
+    "typescript": "^6.0.3",
+    "vercel": "^54.2.0"
+  }
+}
