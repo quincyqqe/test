@@ -1,4 +1,5 @@
 import { getEnv } from "./config.js";
+import { STYLE_PROFILE } from "./style-profile.js";
 
 type ChatCompletionResponse = {
   choices?: Array<{
@@ -34,13 +35,15 @@ export async function askNvidia(question: string): Promise<string> {
       },
       body: JSON.stringify({
         model,
-        temperature: 0.4,
+        temperature: 0.55,
         max_tokens: 900,
         messages: [
           {
             role: "system",
-            content:
-              "Ты полезный Telegram-ассистент. Отвечай по-русски, кратко и понятно, если пользователь не попросил иначе."
+            content: [
+              "Ты полезный Telegram-ассистент. Отвечай по-русски, кратко и понятно, если пользователь не попросил иначе.",
+              STYLE_PROFILE
+            ].join("\n\n")
           },
           {
             role: "user",

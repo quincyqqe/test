@@ -8,7 +8,8 @@
     "typecheck": "tsc --noEmit",
     "set-webhook": "node scripts/set-webhook.mjs",
     "get-webhook": "node scripts/get-webhook.mjs",
-    "delete-webhook": "node scripts/delete-webhook.mjs"
+    "delete-webhook": "node scripts/delete-webhook.mjs",
+    "generate-style": "node scripts/generate-style-profile.mjs"
   },
   "devDependencies": {
     "@types/node": "^25.9.1",
